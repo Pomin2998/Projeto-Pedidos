@@ -38,6 +38,9 @@ public class PedidosController {
 
         return new ResponseEntity<>(pedidosalvo, HttpStatus.OK);
     }
+
+    
+    // Read
     @GetMapping("/pedidos")
     public ResponseEntity<List<Pedidos>> listar() {
         List<Pedidos> pedidos = new ArrayList<>();
@@ -46,6 +49,7 @@ public class PedidosController {
         return new ResponseEntity<>(pedidos, HttpStatus.OK);
     
     }
+
     // Update
     @PutMapping("/pedidos/{id}")
     public ResponseEntity<Pedidos> atualizar(@PathVariable Long id, @RequestBody Pedidos pedidos) {
