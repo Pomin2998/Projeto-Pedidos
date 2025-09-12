@@ -39,7 +39,7 @@ public class PedidosController {
         return new ResponseEntity<>(pedidosalvo, HttpStatus.OK);
     }
 
-    
+
     // Read
     @GetMapping("/pedidos")
     public ResponseEntity<List<Pedidos>> listar() {
@@ -63,6 +63,8 @@ public class PedidosController {
             pedidoAtualizado.setRegiao(pedidos.getRegiao());
             pedidoAtualizado.setProduto(pedidos.getProduto());
             pedidoAtualizado.setQuantidade(pedidos.getQuantidade());
+
+            repository.save(pedidoAtualizado);
             
             return new ResponseEntity<>(pedidoAtualizado, HttpStatus.OK);
         } else {
