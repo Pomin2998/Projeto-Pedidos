@@ -29,15 +29,9 @@ public class Devolucao {
     private String motivo;
     private String dataDevolucao;
 
-    
 
+    // FK para Venda
     @ManyToOne
-    @JoinColumn(name = "id_Devolucao")
-    private Devolucao devolucao;
-
-
-
-
-  
-}    
-
+    @JoinColumn(name = "venda_id_venda")
+    private Venda venda;
+}
