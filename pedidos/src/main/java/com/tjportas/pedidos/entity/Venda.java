@@ -26,24 +26,27 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 
-
 public class Venda {
 
-    @Id 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_venda;
     private String datavenda;
     private Double valorVenda;
-    
-    
 
 
+     // FK para Orcamento
     @ManyToOne
-    @JoinColumn(name = "id_orcamento")
+    @JoinColumn(name = "orcamento_id_orcamento")
     private Orcamento orcamento;
 
+    // Relacionamento 1 → N com Devolucao
     @OneToMany(mappedBy = "venda")
     @JsonIgnore
-    private List<Orcamento> estoque;
-}
+    private List<Devolucao> devolucoes;
 
+    // Relacionamento 1 → N com Troca
+    @OneToMany(mappedBy = "venda")
+    @JsonIgnore
+    private List<Troca> trocas;
+}

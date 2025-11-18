@@ -1,11 +1,14 @@
 package com.tjportas.pedidos.entity;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,18 +28,14 @@ public class Orcamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_orcamento; 
+    private Long id_orcamento;
     private String dataOrcamento;
     private Double valorTotal;
     private String cliente;
 
 
-
-@ManyToOne
-    @JoinColumn(name = "id_orcamento")
-    private Orcamento orcamento;
-
-
-
-
+    // Relacionamento 1 → N com Venda
+    @OneToMany(mappedBy = "orcamento")
+    @JsonIgnore
+    private List<Venda> vendas;
 }

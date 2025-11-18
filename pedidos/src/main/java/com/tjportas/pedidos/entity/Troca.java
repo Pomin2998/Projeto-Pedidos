@@ -23,23 +23,18 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 
-
 public class Troca {
 
-    @Id 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_troca;
     private String dataTroca;
     private String motivo;
     private Date troca;
-    
-    
 
-    
 
+    // FK para Venda
     @ManyToOne
-    @JoinColumn(name = "venda_idvenda")
+    @JoinColumn(name = "venda_id_venda")
     private Venda venda;
-
-
 }
