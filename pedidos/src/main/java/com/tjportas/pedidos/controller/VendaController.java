@@ -50,8 +50,8 @@ public class VendaController {
 
         if (vendaDesatualizada.isPresent()) {
             Venda vendaAtualizada = vendaDesatualizada.get();
-            vendaAtualizada.setDescricao(venda.getDescricao());
-            vendaAtualizada.setValor(venda.getValor());
+            vendaAtualizada.setDatavenda(venda.getDatavenda());
+            vendaAtualizada.setValorVenda(venda.getValorVenda());
 
             repository.save(vendaAtualizada);
             return new ResponseEntity<>(vendaAtualizada, HttpStatus.OK);
@@ -59,7 +59,7 @@ public class VendaController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    
+
     // Delete - Delete
     @DeleteMapping("/venda/{id}")
        public ResponseEntity<Venda> deletar(@PathVariable Long id) {

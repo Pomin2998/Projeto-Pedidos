@@ -27,7 +27,7 @@ public class Devolucao {
     private Long id_devolucao;
     private String produto;
     private String motivo;
-    
+    private String dataDevolucao;
 
     
 

@@ -32,10 +32,9 @@ public class Venda {
     @Id 
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_venda;
-    private Data venda;
-    private Double valor;
-    private String descricao;
-    private String cliente;
+    private String datavenda;
+    private Double valorVenda;
+    
     
 
 

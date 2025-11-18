@@ -29,18 +29,16 @@ public class Troca {
     @Id 
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_troca;
-    private String produto;
+    private String dataTroca;
     private String motivo;
     private Date troca;
-    private String produto_novo;
-    private Double diferenca_valor;
-    private String cliente;
+    
     
 
     
 
     @ManyToOne
-    @JoinColumn(name = "id_venda")
+    @JoinColumn(name = "venda_idvenda")
     private Venda venda;
 
 

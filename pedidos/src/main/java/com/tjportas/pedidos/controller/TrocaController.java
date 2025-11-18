@@ -2,6 +2,7 @@ package com.tjportas.pedidos.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tjportas.pedidos.entity.Orcamento;
 import com.tjportas.pedidos.entity.Troca;
 import com.tjportas.pedidos.repository.TrocaRepository;
 
@@ -47,21 +48,16 @@ public class TrocaController {
     @PutMapping("/troca/{id}")  
     public ResponseEntity<Troca> atualizarTroca(@PathVariable Long id, @RequestBody Troca troca) {
 
-        Optional<Troca> trocaDesatualizada = repository.findById(id);
+        Optional<Troca> trocaExistente = repository.findById(id);
 
-        if (trocaDesatualizada.isPresent()) {
-            // Try to assign the existing id to the incoming entity (if 'id' field exists)
-            try {
-                java.lang.reflect.Field idField = Troca.class.getDeclaredField("id");
-                idField.setAccessible(true);
-                idField.set(troca, id);
-            } catch (NoSuchFieldException | IllegalAccessException e) {
-                // If we can't set the id via reflection, fall back to merging manually if needed.
-                // For now we will proceed to save the incoming entity; ensure your Troca class exposes an ID setter if you want safer updates.
-            }
+             if (trocaExistente.isPresent()) {
+            Troca trocaAtualizado = trocaExistente.get();
+            trocaAtualizado.setDataTroca(troca.getDataTroca());
+            trocaAtualizado.setMotivo(troca.getMotivo());
+            trocaAtualizado.setTroca(troca.getTroca());
 
-            Troca trocaAtualizada = repository.save(troca);
-            return new ResponseEntity<>(trocaAtualizada, HttpStatus.OK);
+            repository.save(trocaAtualizado);
+            return new ResponseEntity<>(trocaAtualizado, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

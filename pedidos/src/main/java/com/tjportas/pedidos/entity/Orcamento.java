@@ -26,8 +26,8 @@ public class Orcamento {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_orcamento; 
-    private Data data;
-    private Double valor_total;
+    private String dataOrcamento;
+    private Double valorTotal;
     private String cliente;
 
 
