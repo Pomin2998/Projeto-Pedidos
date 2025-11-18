@@ -52,7 +52,7 @@ public class TrocaController {
             Troca trocaAtualizado = trocaExistente.get();
             trocaAtualizado.setDataTroca(troca.getDataTroca());
             trocaAtualizado.setMotivo(troca.getMotivo());
-            trocaAtualizado.setTroca(troca.getTroca());
+            trocaAtualizado.setDataTroca(troca.getDataTroca());
 
             repository.save(trocaAtualizado);
             return new ResponseEntity<>(trocaAtualizado, HttpStatus.OK);

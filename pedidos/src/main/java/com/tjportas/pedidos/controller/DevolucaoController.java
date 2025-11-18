@@ -26,7 +26,7 @@ public class DevolucaoController {
     DevolucaoRepository repository;
 
     // Create - Post
-    @PostMapping("/devolucoes")
+    @PostMapping("/devolucao")
     public ResponseEntity<Devolucao> salvar(@RequestBody Devolucao devolucao) {
         Devolucao devolucaoSalva = repository.save(devolucao);
 
@@ -34,12 +34,12 @@ public class DevolucaoController {
     }
 
     // Read - Get
-    @GetMapping("/devolucoes")
+    @GetMapping("/devolucao")
     public ResponseEntity<List<Devolucao>> listar() {
-        List<Devolucao> devolucoes = new ArrayList<>();
-        repository.findAll().forEach(devolucoes::add);
+        List<Devolucao> devolucao = new ArrayList<>();
+        repository.findAll().forEach(devolucao::add);
 
-        return new ResponseEntity<>(devolucoes, HttpStatus.OK);
+        return new ResponseEntity<>(devolucao, HttpStatus.OK);
     }
 
     // Update - Put
@@ -62,7 +62,7 @@ public class DevolucaoController {
     }
 
     // Delete - Delete
-    @DeleteMapping("/devolucoes/{id}")
+    @DeleteMapping("/devolucao/{id}")
     public ResponseEntity<Devolucao> deletar(@PathVariable Long id) {
 
         repository.deleteById(id);

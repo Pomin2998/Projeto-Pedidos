@@ -1,13 +1,12 @@
 package com.tjportas.pedidos.entity;
 
-import java.sql.Date;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,16 +21,18 @@ import lombok.ToString;
 @Getter
 @AllArgsConstructor
 @ToString
-
 public class Troca {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_troca;
-    private String dataTroca;
-    private String motivo;
-    private Date troca;
+    @Column(name = "id_troca")
+    private Long idTroca;
 
+    @Column(name = "data_troca")
+    private String dataTroca;
+
+    @Column(name = "motivo")
+    private String motivo;
 
     // FK para Venda
     @ManyToOne

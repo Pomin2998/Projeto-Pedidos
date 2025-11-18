@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,15 +21,21 @@ import lombok.ToString;
 @Getter
 @AllArgsConstructor
 @ToString
-
 public class Devolucao {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_devolucao;
-    private String produto;
-    private String motivo;
-    private String dataDevolucao;
+    @Column(name = "id_devolucao")
+    private Long idDevolucao;
 
+    @Column(name = "produto")
+    private String produto;
+
+    @Column(name = "motivo")
+    private String motivo;
+
+    @Column(name = "data_devolucao")
+    private String dataDevolucao;
 
     // FK para Venda
     @ManyToOne

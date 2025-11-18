@@ -26,7 +26,7 @@ public class VendaController {
     VendaRepository repository;
 
     // Create - Post
-    @PostMapping("/Venda")
+    @PostMapping("/venda")
     public ResponseEntity<Venda> salvar(@RequestBody Venda venda) {
         Venda vendaSalva = repository.save(venda);
 
@@ -50,7 +50,7 @@ public class VendaController {
 
         if (vendaDesatualizada.isPresent()) {
             Venda vendaAtualizada = vendaDesatualizada.get();
-            vendaAtualizada.setDatavenda(venda.getDatavenda());
+            vendaAtualizada.setDataVenda(venda.getDataVenda());
             vendaAtualizada.setValorVenda(venda.getValorVenda());
 
             repository.save(vendaAtualizada);

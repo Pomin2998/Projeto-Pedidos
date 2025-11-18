@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,28 +26,31 @@ import lombok.ToString;
 @Getter
 @AllArgsConstructor
 @ToString
-
 public class Venda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_venda;
-    private String datavenda;
+    @Column(name = "id_venda")
+    private Long idVenda;
+
+    @Column(name = "data_venda")
+    private String dataVenda;
+
+    @Column(name = "valor_venda")
     private Double valorVenda;
 
-
-     // FK para Orcamento
+    // FK padronizada para Orcamento
     @ManyToOne
-    @JoinColumn(name = "orcamento_id_orcamento")
+    @JoinColumn(name = "orcamento_id")  // <-- NOME CORRETO
     private Orcamento orcamento;
 
-    // Relacionamento 1 → N com Devolucao
     @OneToMany(mappedBy = "venda")
     @JsonIgnore
     private List<Devolucao> devolucoes;
 
-    // Relacionamento 1 → N com Troca
     @OneToMany(mappedBy = "venda")
     @JsonIgnore
     private List<Troca> trocas;
+
+    
 }
